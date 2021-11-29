@@ -28,10 +28,10 @@ use App\Http\Controllers\TemaController;
 Route::get('/', HomeController::class);
 
 //Persona
-Route::get('Persona', [PersonaController::class, 'index']);
-Route::get('Persona/create', [PersonaController::class, 'create']);
-Route::get('Persona/{Personal}', [PersonaController::class, 'show']);
-
+Route::get('Persona', [PersonaController::class, 'index'])->name('personas.index');
+Route::get('Persona/create', [PersonaController::class, 'create'])->name('personas.create');
+Route::get('Persona', [PersonaController::class, 'store'])->name('personas.store');
+Route::post('Persona/{id}', [PersonaController::class, 'create'])->name('personas.show');
 //Cajero
 Route::get('Cajero', [CajeroController::class, 'index']);
 Route::get('Cajero/create', [CajeroController::class, 'create']);

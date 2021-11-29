@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class CreateSessionsTable extends Migration
-{//
+{//a
     /**
      * Run the migrations.
      *
