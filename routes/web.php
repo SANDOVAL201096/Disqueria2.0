@@ -31,7 +31,9 @@ Route::get('/', HomeController::class);
 Route::get('Persona', [PersonaController::class, 'index'])->name('personas.index');
 Route::get('Persona/create', [PersonaController::class, 'create'])->name('personas.create');
 Route::get('Persona', [PersonaController::class, 'store'])->name('personas.store');
-Route::post('Persona/{id}', [PersonaController::class, 'create'])->name('personas.show');
+Route::post('Persona/{persona}', [PersonaController::class, 'show'])->name('personas.show');
+Route::post('Persona/{persona}', [PersonaController::class, 'edit'])->name('personas.edit');
+Route::put('Persona/{persona}', [PersonaController::class, 'update'])->name('personas.update');
 //Cajero
 Route::get('Cajero', [CajeroController::class, 'index']);
 Route::get('Cajero/create', [CajeroController::class, 'create']);

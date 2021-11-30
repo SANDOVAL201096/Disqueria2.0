@@ -1,35 +1,41 @@
-extends('layouts.plantilla')
+@extends('layouts.plantilla')
 
-section('title','Crear Persona')
+@section('title','Crear Persona')
 
-section('content')
+@section('content')
     <h1>En esta seccion podras agregar un Persona</h1>
-    <form action="{{ route('persona.store')}}"method="POST">
+    <form action="{{ route('personas.store')}}"method="POST">
      @csrf
     <label for="">
             Id Persona:
-            <input type="text" name ="idpersona">
+            <input type="text" name ="idpersona" value="{{ old('idpersona') }}">
 </label>
 <br>
 <label>
 <label for="">
-            Id Persona:
-            <input type="text" name ="nombre">
+            nombre:
+            <input type="text" name ="nombre"value="{{ old('nombre') }}">
+</label>
+<br>
+@error('nombre')
+<br>
+<small>*{{ $message }}</small>
+<br>
+@enderror
+<br>
+<label for="">
+            apellido:
+            <input type="text" name ="apellido"value="{{ old('apellido') }}">
 </label>
 <br>
 <label for="">
-            Id Persona:
-            <input type="text" name ="apellido">
+            cedula:
+            <input type="number" name ="cedula"value="{{ old('cedula') }}">
 </label>
 <br>
 <label for="">
-            Id Persona:
-            <input type="number" name ="cedula">
-</label>
-<br>
-<label for="">
-            Id Persona:
-            <input type="number" name ="celular">
+            celular:
+            <input type="number" name ="celular"value="{{ old('celular') }}">
 </label>
 <br>
 <button type="submit">REGISTRAR</button>

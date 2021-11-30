@@ -17,6 +17,14 @@ class PersonaController extends Controller
         return view('Persona.create');
     }
     public function store(request $request){
+        $request->validate([
+        'idpersona'=>'required',
+        'nombre'=>'required',
+        'apellido'=>'required',
+        'cedula'=>'required',
+        'celular'=>'required'
+        ]);
+
         $persona = new Persona();
 
         $persona->idpersona= $request->persona;
@@ -25,10 +33,30 @@ class PersonaController extends Controller
         $persona->cedula= $request->cedula;
         $persona->celular= $request->celular;
         $persona-> save();
-        return redirect()->route('personas.show');
+        return redirect()->route('personas.show', $persona);
     }
-    public function show($id){
-        $persona = persona::find($id);
+    public function show(Persona $persona){
+
+        
         return view('personas.show', compact('persona'));
     }
+    public function edit(Persona $persona){
+        return view('personas.edit', compact('persona'));
+    }
+    public function update(request $request, Persona $persona){
+        $request->validate([
+            'idpersona'=>'required',
+            'nombre'=>'required',
+            'apellido'=>'required',
+            'cedula'=>'required',
+            'celular'=>'required'
+            ]);
+        $persona->idpersona= $request->persona;
+        $persona->nombre= $request->nombre;
+        $persona->apellido= $request->apellido;
+        $persona->cedula= $request->cedula;
+        $persona->celular= $request->celular;
+        $persona-> save();
+        return redirect()->route('personas.show', $persona);
+}
 }
